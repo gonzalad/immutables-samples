@@ -14,9 +14,16 @@ We're using a simple dsl for the builder style (see unit test).
 
 Another tree structure, this one more convoluted
 
-## TODO
+## Package org.example.tree.relation.inheritance
 
-add relation type to in the tree structure (aka required relation, and other relation depending on 
-the type of subnode)
+Edge relation (i.e. required attribute) modeled as a node inheritance.
+
+IMO not very tasty.
+
+## Package org.example.tree.relation.association
+
+Edge relation (i.e. required attribute) modeled as association.
+
+Better.
 
 
