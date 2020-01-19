@@ -10,26 +10,22 @@ public class NodeTest {
                 .id("<root>>")
                 .name("<root>")
                 .label("root")
-                .group(new Node.GroupEdge.Builder()
+                .group(e -> e
                         .someData(12)
-                        .node(new GroupNode.Builder()
+                        .node(g -> g
                                 .id("1")
                                 .label("child1")
                                 .min(0)
                                 .max(5)
-                                .build()
                         )
-                        .build()
-
                 )
-                .object(new Node.Edge.Builder()
+                .object(e -> e
                         .required(false)
-                        .node(new ObjectNode.Builder()
+                        .node(o -> o
                                 .id("1.1")
                                 .label("child1.1")
                                 .type("UE")
-                                .build())
-                        .build()
+                        )
                 )
                 .build();
         System.out.println(tree);
@@ -47,10 +43,9 @@ public class NodeTest {
                 .id("<root>>")
                 .name("<root>")
                 .label("root")
-                .object(new Node.Edge.Builder()
+                .object(e -> e
                         .required(false)
                         .node(objectNode)
-                        .build()
                 )
                 .build();
         System.out.println(tree);

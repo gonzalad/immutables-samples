@@ -9,15 +9,13 @@ public class NodeTest {
         Node tree = new Node.Builder()
                 .id("<root>>")
                 .label("root")
-                .node(() -> new Node.Builder()
+                .node(n -> n
                         .id("1")
                         .label("child1")
-                        .build()
                 )
-                .node(() -> new Node.Builder()
+                .node(n -> n
                         .id("2")
                         .label("child2")
-                        .build()
                 )
                 .build();
         System.out.println(tree);

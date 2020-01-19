@@ -2,6 +2,7 @@ package org.example.tree.relation.inheritance;
 
 import org.immutables.value.Value;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Value.Immutable
@@ -19,8 +20,8 @@ public interface GroupNode extends Node {
 
     class Builder extends ImmutableGroupNode.Builder {
 
-        public GroupNode.Builder child(Supplier<Child> supplier) {
-            this.addChildren(supplier.get());
+        public GroupNode.Builder child(Function<ObjectChild.Builder, ObjectChild.Builder> child) {
+            this.addChildren(child.apply(new ObjectChild.Builder()).build());
             return this;
         }
     }

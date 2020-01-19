@@ -3,6 +3,7 @@ package org.example.tree.relation.association;
 import org.immutables.value.Value;
 
 import java.util.List;
+import java.util.function.Function;
 
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
@@ -24,6 +25,10 @@ public interface Node {
         Node node();
 
         class Builder extends ImmutableEdge.Builder {
+            public Builder node(Function<ObjectNode.Builder, ObjectNode.Builder> node) {
+                this.node(node.apply(new ObjectNode.Builder()).build());
+                return this;
+            }
         }
     }
 
@@ -40,6 +45,10 @@ public interface Node {
         }
 
         class Builder extends ImmutableGroupEdge.Builder {
+            public Builder node(Function<GroupNode.Builder, GroupNode.Builder> node) {
+                this.node(node.apply(new GroupNode.Builder()).build());
+                return this;
+            }
         }
     }
 }

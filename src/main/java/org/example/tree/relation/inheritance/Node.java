@@ -3,6 +3,7 @@ package org.example.tree.relation.inheritance;
 import org.immutables.value.Value;
 
 import java.util.List;
+import java.util.function.Function;
 
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
@@ -42,8 +43,8 @@ public interface Node {
 
         class Builder extends ImmutableGroupChild.Builder {
 
-            public Builder object(Child child) {
-                this.addChildren(child);
+            public Builder object(Function<ObjectChild.Builder, ObjectChild.Builder> child) {
+                this.addChildren(child.apply(new ObjectChild.Builder()).build());
                 return this;
             }
         }

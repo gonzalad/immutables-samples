@@ -10,26 +10,23 @@ public class NodeTest {
                 .id("<root>>")
                 .name("<root>")
                 .label("root")
-                .group(new Node.GroupChild.Builder()
+                .group(g -> g
                         .someData(12)
                         .id("1")
                         .label("child1")
                         .min(0)
                         .max(5)
-                        .object(new Node.ObjectChild.Builder()
+                        .object( o -> o
                                 .id("1.1")
                                 .label("child1.1")
                                 .type("UE")
-                                .build()
                         )
-                        .build()
                 )
-                .object(new Node.ObjectChild.Builder()
+                .object(o -> o
                         .id("2")
                         .label("child2")
                         .required(false)
                         .type("UE")
-                        .build()
                 )
                 .build();
         System.out.println(tree);

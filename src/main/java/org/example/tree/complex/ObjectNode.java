@@ -2,6 +2,8 @@ package org.example.tree.complex;
 
 import org.immutables.value.Value;
 
+import java.util.function.Function;
+
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
 public interface ObjectNode extends Node {
@@ -9,8 +11,8 @@ public interface ObjectNode extends Node {
 
     class Builder extends ImmutableObjectNode.Builder {
 
-        public ObjectNode.Builder object(ObjectNode objectNode) {
-            this.addNodes(objectNode);
+        public ObjectNode.Builder object(Function<Builder, ObjectNode.Builder> objectNode) {
+            this.addNodes(objectNode.apply(new ObjectNode.Builder()).build());
             return this;
         }
     }

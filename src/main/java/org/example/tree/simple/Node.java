@@ -3,6 +3,7 @@ package org.example.tree.simple;
 import org.immutables.value.Value;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Value.Immutable
@@ -16,8 +17,8 @@ public interface Node {
 
     class Builder extends ImmutableNode.Builder {
 
-        public Builder node(Supplier<Node> supplier) {
-            this.addNodes(supplier.get());
+        public Builder node(Function<Node.Builder, Node.Builder> node) {
+            this.addNodes(node.apply(new Builder()).build());
             return this;
         }
     }
