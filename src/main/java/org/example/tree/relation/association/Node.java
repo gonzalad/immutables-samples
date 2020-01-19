@@ -3,7 +3,6 @@ package org.example.tree.relation.association;
 import org.immutables.value.Value;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
@@ -35,17 +34,12 @@ public interface Node {
 
         @Value.Check
         default void check() {
-            if (! (node() instanceof GroupNode)) {
+            if (!(node() instanceof GroupNode)) {
                 throw new IllegalArgumentException("node must be an instance of GroupNode");
             }
         }
 
         class Builder extends ImmutableGroupEdge.Builder {
-
-            public Builder node(Supplier<GroupNode> supplier) {
-                this.node(supplier.get());
-                return this;
-            }
         }
     }
 }

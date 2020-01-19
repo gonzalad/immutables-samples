@@ -3,18 +3,19 @@ package org.example.tree.relation.inheritance;
 import org.immutables.value.Value;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
 public interface Node {
     String id();
+
     String label();
+
     List<Child> children();
 
     /**
      * Represents a node inside a tree.
-     *
+     * <p>
      * Only subclasses from Child are meant to be instanciated
      */
     @Value.Immutable
@@ -41,8 +42,8 @@ public interface Node {
 
         class Builder extends ImmutableGroupChild.Builder {
 
-            public Builder object(Supplier<Child> supplier) {
-                this.addChildren(supplier.get());
+            public Builder object(Child child) {
+                this.addChildren(child);
                 return this;
             }
         }
