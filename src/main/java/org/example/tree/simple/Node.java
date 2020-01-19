@@ -9,7 +9,9 @@ import java.util.function.Supplier;
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
 public interface Node {
     String id();
+
     String label();
+
     List<Node> nodes();
 
     class Builder extends ImmutableNode.Builder {

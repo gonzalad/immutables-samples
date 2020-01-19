@@ -2,8 +2,6 @@ package org.example.tree.relation.association;
 
 import org.immutables.value.Value;
 
-import java.util.function.Supplier;
-
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PACKAGE, overshadowImplementation = true)
 public interface ObjectNode extends Node {
@@ -11,8 +9,8 @@ public interface ObjectNode extends Node {
 
     class Builder extends ImmutableObjectNode.Builder {
 
-        public ObjectNode.Builder object(Supplier<Edge> supplier) {
-            this.addEdges(supplier.get());
+        public ObjectNode.Builder object(Edge edge) {
+            this.addEdges(edge);
             return this;
         }
     }

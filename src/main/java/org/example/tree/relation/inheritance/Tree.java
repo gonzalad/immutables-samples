@@ -2,8 +2,6 @@ package org.example.tree.relation.inheritance;
 
 import org.immutables.value.Value;
 
-import java.util.function.Supplier;
-
 /**
  * Root of a tree
  */
@@ -14,13 +12,13 @@ public interface Tree extends Node {
 
     class Builder extends ImmutableTree.Builder {
 
-        public Builder object(Supplier<Child> supplier) {
-            this.addChildren(supplier.get());
+        public Builder object(Child child) {
+            this.addChildren(child);
             return this;
         }
 
-        public Builder group(Supplier<GroupChild> supplier) {
-            this.addChildren(supplier.get());
+        public Builder group(GroupChild groupChild) {
+            this.addChildren(groupChild);
             return this;
         }
     }
