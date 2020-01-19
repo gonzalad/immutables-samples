@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // compile fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor "org.immutables:value:2.8.2" // for annotation processor
+    compileOnly "org.immutables:value:2.8.2:annotations" // annotation-only artifact
+    compileOnly "org.immutables:builder:2.8.2" // there are only annotations anyway
+    compileOnly "org.immutables:gson:2.8.2:annotations" // annotation-only artifact
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
